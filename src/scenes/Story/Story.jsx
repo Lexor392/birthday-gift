@@ -13,20 +13,20 @@ function StoryScene({ onContinue }) {
   return (
     <section className="scene scene--story" aria-labelledby="story-title">
       <header className="story-intro scene__content">
-        <p className="eyebrow">Наша история</p>
-        <h1 id="story-title"><AnimatedLetters text="С того самого сообщения" /></h1>
-        <p className="scene__lead"><AnimatedLetters text="Иногда всё начинается с нескольких совершенно обычных слов." /></p>
-        <p className="story-intro__meta">{story.length} событий · август — сентябрь 2026</p>
+        <p className="eyebrow">Наша історія</p>
+        <h1 id="story-title"><AnimatedLetters text="Із того самого повідомлення" /></h1>
+        <p className="scene__lead"><AnimatedLetters text="Іноді все починається з кількох абсолютно звичайних слів." /></p>
+        <p className="story-intro__meta">{story.length} подій · серпень — вересень 2026</p>
       </header>
 
-      <div className="story-timeline" aria-label="Хронология истории">
+      <div className="story-timeline" aria-label="Хронологія історії">
         <div className="story-timeline__line" aria-hidden="true" />
         {story.map((event, index) => <StoryEvent key={event.id} event={event} index={index} />)}
       </div>
 
       <div className="story-end scene__content">
-        <p className="eyebrow">Продолжение следует</p>
-        <Button onClick={onContinue}>Продолжить</Button>
+        <p className="eyebrow">Далі буде</p>
+        <Button onClick={onContinue}>Продовжити</Button>
       </div>
     </section>
   )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Button from '../../components/Button/Button.jsx'
 
-const lines = ['Некоторые вещи невозможно купить.', 'Но их можно сделать самому.', 'Для тебя.']
+const lines = ['Деякі речі неможливо купити.', 'Але їх можна створити власноруч.', 'Для тебе.']
 
 function IntroScene({ onContinue }) {
   const [revealedLines, setRevealedLines] = useState(0)
@@ -14,7 +14,7 @@ function IntroScene({ onContinue }) {
   return (
     <section className="scene scene--intro" aria-labelledby="intro-title">
       <div className="scene__content intro-content">
-        <p className="eyebrow">Небольшая история</p>
+        <p className="eyebrow">Невелика історія</p>
         <h1 id="intro-title" className="intro-lines">
           {lines.map((line, index) => (
             <span key={line} className={`intro-lines__line ${revealedLines > index ? 'is-visible' : ''}`}>
@@ -24,7 +24,7 @@ function IntroScene({ onContinue }) {
         </h1>
         {revealedLines === lines.length && (
           <div className="scene__action is-visible">
-            <Button onClick={onContinue}>Продолжить</Button>
+            <Button onClick={onContinue}>Продовжити</Button>
           </div>
         )}
       </div>

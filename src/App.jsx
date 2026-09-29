@@ -63,8 +63,8 @@ function App() {
         <>
           {renderScene()}
           {currentScene !== 'intro' && currentScene !== 'welcome' && currentScene !== 'finale' && (
-            <nav className="scene-nav" aria-label="Навигация по разделам">
-              <Button variant="text" onClick={() => goToScene('welcome')}>В начало</Button>
+            <nav className="scene-nav" aria-label="Навігація розділами">
+              <Button variant="text" onClick={() => goToScene('welcome')}>На початок</Button>
             </nav>
           )}
         </>

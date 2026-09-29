@@ -80,7 +80,7 @@ function FinaleScene({ onRestart }) {
         <span className={`finale__divider finale__reveal${isVisible(4) ? ' is-visible' : ''}`} aria-hidden="true" />
 
         <div className={`finale__restart finale__reveal${isVisible(4) ? ' is-visible' : ''}`}>
-          <Button variant="text" onClick={onRestart}>Начать сначала</Button>
+          <Button variant="text" onClick={onRestart}>Почати спочатку</Button>
         </div>
       </div>
     </section>

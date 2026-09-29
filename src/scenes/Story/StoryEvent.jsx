@@ -86,7 +86,7 @@ function StoryEvent({ event, index }) {
         <div
           className={`story-event__media story-event__media--${media.length > 1 ? 'grid' : 'single'}${isHorizontalPhotoGallery ? ` story-event__media--${media.length}-horizontal` : ''}`}
           style={cardHeight ? { '--story-card-height': `${cardHeight}px` } : undefined}
-          aria-label={`Медиа к событию: ${event.date}`}
+          aria-label={`Медіа до події: ${event.date}`}
         >
           {media.map((item, mediaIndex) => (
             <StoryMedia
@@ -165,7 +165,7 @@ function StoryMedia({ item, fallbackAlt, onMediaClick, onOrientationChange }) {
         className={`story-media story-media--image ${orientationClass}`}
         type="button"
         onClick={() => onMediaClick(item)}
-        aria-label={`Открыть изображение: ${item.alt || fallbackAlt}`}
+        aria-label={`Відкрити зображення: ${item.alt || fallbackAlt}`}
       >
         <img
           src={item.src}
@@ -191,13 +191,13 @@ function StoryMedia({ item, fallbackAlt, onMediaClick, onOrientationChange }) {
           aria-label={item.alt || fallbackAlt}
         >
           <source src={item.src} />
-          Ваш браузер не поддерживает воспроизведение видео.
+          Ваш браузер не підтримує відтворення відео.
         </video>
         <button
           className="story-media__fullscreen"
           type="button"
           onClick={() => onMediaClick(item)}
-          aria-label={`Открыть видео на весь экран: ${item.alt || fallbackAlt}`}
+          aria-label={`Відкрити відео на весь екран: ${item.alt || fallbackAlt}`}
         >
           <Icon name="fullscreen" />
         </button>
@@ -226,13 +226,13 @@ function StoryLightbox({ mediaItems, activeIndex, media, title, onClose, onChang
       className="story-lightbox"
       role="dialog"
       aria-modal="true"
-      aria-label={media.type === 'video' ? 'Просмотр видео' : 'Просмотр изображения'}
+      aria-label={media.type === 'video' ? 'Перегляд відео' : 'Перегляд зображення'}
       onClick={onClose}
     >
       <button
         className="story-lightbox__close"
         type="button"
-        aria-label="Закрыть просмотр"
+        aria-label="Закрити перегляд"
         onClick={onClose}
       >
         <Icon name="close" />
@@ -242,7 +242,7 @@ function StoryLightbox({ mediaItems, activeIndex, media, title, onClose, onChang
           <button
             className="story-lightbox__arrow story-lightbox__arrow--previous"
             type="button"
-            aria-label="Предыдущее медиа"
+            aria-label="Попереднє медіа"
             onClick={showPrevious}
           >
             <Icon name="chevron_left" />
@@ -250,7 +250,7 @@ function StoryLightbox({ mediaItems, activeIndex, media, title, onClose, onChang
           <button
             className="story-lightbox__arrow story-lightbox__arrow--next"
             type="button"
-            aria-label="Следующее медиа"
+            aria-label="Наступне медіа"
             onClick={showNext}
           >
             <Icon name="chevron_right" />
@@ -261,7 +261,7 @@ function StoryLightbox({ mediaItems, activeIndex, media, title, onClose, onChang
         {media.type === 'video' ? (
           <video controls autoPlay muted loop playsInline preload="auto" poster={media.poster}>
             <source src={media.src} />
-            Ваш браузер не поддерживает воспроизведение видео.
+            Ваш браузер не підтримує відтворення відео.
           </video>
         ) : (
           <img src={media.src} alt={media.alt || title} />

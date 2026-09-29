@@ -66,7 +66,7 @@ function MusicPlayer({ startSignal = '' }) {
   }
 
   const soundIcon = !isPlaying || isMuted ? 'volume_off' : 'volume_up'
-  const soundLabel = !isPlaying || isMuted ? 'Включить музыку' : 'Выключить звук'
+  const soundLabel = !isPlaying || isMuted ? 'Увімкнути музику' : 'Вимкнути звук'
 
   return (
     <div className={`music-player${isPlaying && !isMuted ? ' is-playing' : ''}`}>

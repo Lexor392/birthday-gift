@@ -12,7 +12,7 @@ function LetterOpening({ onBack, onOpen }) {
         <h1 id="letter-title">{letter.title}</h1>
         <p className="letter-opening__subtitle">{letter.subtitle}</p>
         <div className="scene__action is-visible">
-          <Button onClick={onOpen}>Открыть письмо</Button>
+          <Button onClick={onOpen}>Відкрити листа</Button>
         </div>
       </div>
       <span className="letter-opening__mark" aria-hidden="true">✦</span>
@@ -26,10 +26,10 @@ function LetterMedia({ media }) {
   if (!images?.length) return null
 
   return (
-    <div className="letter-media" aria-label="Дополнительные материалы письма">
+    <div className="letter-media" aria-label="Додаткові матеріали листа">
       {images.map((item) => (
         <figure className="letter-media__item" key={item.src}>
-          <img src={item.src} alt={item.alt || 'Иллюстрация к письму'} loading="lazy" />
+          <img src={item.src} alt={item.alt || 'Ілюстрація до листа'} loading="lazy" />
           {item.caption && <figcaption>{item.caption}</figcaption>}
         </figure>
       ))}
@@ -70,7 +70,7 @@ function LetterReading({ onBack, onContinue }) {
     <div className="letter-reading">
       <div className="letter-reading__topline">
         <button className="letter-back" type="button" onClick={onBack}>← Назад</button>
-        <span>ЛИЧНОЕ ПИСЬМО</span>
+        <span>ОСОБИСТИЙ ЛИСТ</span>
       </div>
 
       <header className="letter-reading__header">
@@ -79,7 +79,7 @@ function LetterReading({ onBack, onContinue }) {
         <span className="letter-divider" aria-hidden="true" />
       </header>
 
-      <article className="letter-body" aria-label="Текст личного письма">
+      <article className="letter-body" aria-label="Текст особистого листа">
         {letter.paragraphs.map((paragraph, index) => (
           <p
             key={`${paragraph}-${index}`}
@@ -96,12 +96,12 @@ function LetterReading({ onBack, onContinue }) {
 
       <footer className="letter-ending">
         <div className="letter-ending__signature">
-          <span>С теплом,</span>
+          <span>З теплом,</span>
           <strong>{letter.signature}</strong>
         </div>
         <span className="letter-divider" aria-hidden="true" />
-        <p>И это ещё не конец.</p>
-        <Button onClick={onContinue}>Продолжить →</Button>
+        <p>І це ще не кінець.</p>
+        <Button onClick={onContinue}>Продовжити →</Button>
       </footer>
     </div>
   )

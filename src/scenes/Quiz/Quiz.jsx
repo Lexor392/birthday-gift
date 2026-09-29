@@ -6,18 +6,18 @@ import './Quiz.scss'
 
 const getResultMessage = (percentage) => {
   if (percentage === 100) {
-    return 'Ну всё. Кажется, ты действительно помнишь нашу историю не хуже меня ♥'
+    return 'Ну все. Здається, ти справді пам’ятаєш нашу історію не гірше за мене ♥'
   }
 
   if (percentage >= 80) {
-    return 'Очень даже неплохо. Похоже, наши маленькие моменты ты всё-таки запоминаешь ♥'
+    return 'Дуже навіть непогано. Схоже, наші маленькі моменти ти все-таки запам’ятовуєш ♥'
   }
 
   if (percentage >= 50) {
-    return 'Есть небольшие пробелы в памяти. Придётся создать ещё больше воспоминаний ♥'
+    return 'Є невеликі прогалини в пам’яті. Доведеться створити ще більше спогадів ♥'
   }
 
-  return 'Кажется, нам срочно нужно создавать новые воспоминания. Очень много новых воспоминаний ♥'
+  return 'Здається, нам терміново потрібно створювати нові спогади. Дуже багато нових спогадів ♥'
 }
 
 function QuizIntro({ onStart, onBack }) {
@@ -25,11 +25,11 @@ function QuizIntro({ onStart, onBack }) {
     <div className="quiz-panel quiz-panel--intro">
       <button className="quiz-back" type="button" onClick={onBack}>← Назад</button>
       <div className="quiz-panel__content">
-        <p className="eyebrow">Небольшой тест</p>
-        <h1 id="quiz-title">Хорошо ли ты помнишь нас?</h1>
-        <p className="scene__lead">Посмотрим, сколько наших маленьких моментов осталось у тебя в памяти.</p>
+        <p className="eyebrow">Невеликий тест</p>
+        <h1 id="quiz-title">Наскільки добре ти нас пам’ятаєш?</h1>
+        <p className="scene__lead">Подивимося, скільки наших маленьких моментів залишилося у твоїй пам’яті.</p>
         <div className="scene__action is-visible">
-          <Button onClick={onStart}>Начать</Button>
+          <Button onClick={onStart}>Почати</Button>
         </div>
       </div>
     </div>
@@ -42,19 +42,19 @@ function QuizMedia({ media, question }) {
   if (!supportedMedia?.length) return null
 
   return (
-    <div className="quiz-media" aria-label="Фото к этому моменту">
+    <div className="quiz-media" aria-label="Фото до цього моменту">
       {supportedMedia.map((item) => (
         <figure className="quiz-media__item" key={item.src}>
           <div className="quiz-media__frame">
             <img
               src={item.src}
-              alt={item.alt || `Фото к вопросу: ${question.question}`}
+              alt={item.alt || `Фото до питання: ${question.question}`}
               loading="lazy"
               onError={(event) => {
                 event.currentTarget.closest('.quiz-media__item')?.classList.add('is-broken')
               }}
             />
-            <span className="quiz-media__fallback" role="img" aria-label="Фото недоступно">Фото не загрузилось</span>
+            <span className="quiz-media__fallback" role="img" aria-label="Фото недоступне">Фото не завантажилося</span>
           </div>
           {item.caption && <figcaption>{item.caption}</figcaption>}
         </figure>
@@ -71,17 +71,17 @@ function QuizQuestion({ question, questionIndex, total, selectedAnswer, answered
   return (
     <div className="quiz-panel quiz-panel--question">
       <div className="quiz-question__topline">
-        <span>Вопрос {questionIndex + 1} из {total}</span>
+        <span>Питання {questionIndex + 1} з {total}</span>
       </div>
 
-      <div className="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax={total} aria-valuenow={questionIndex + 1} aria-label={`Пройдено вопросов: ${questionIndex + 1} из ${total}`}>
+      <div className="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax={total} aria-valuenow={questionIndex + 1} aria-label={`Пройдено питань: ${questionIndex + 1} з ${total}`}>
         <span style={{ width: `${((questionIndex + 1) / total) * 100}%` }} />
       </div>
 
       <div className="quiz-question__body">
         <p className="eyebrow">Наш маленький момент</p>
         <h2 id="quiz-title">{question.question}</h2>
-        <div className="quiz-options" role="group" aria-label="Варианты ответа">
+        <div className="quiz-options" role="group" aria-label="Варіанти відповіді">
           {question.options.map((option, optionIndex) => {
             const isSelected = selectedAnswer === option.id
             const isCorrectOption = option.id === question.correctAnswer
@@ -104,8 +104,8 @@ function QuizQuestion({ question, questionIndex, total, selectedAnswer, answered
               >
                 <span className="quiz-option__letter" aria-hidden="true">{String.fromCharCode(65 + optionIndex)}</span>
                 <span>{option.text}</span>
-                {answered && isCorrectOption && <span className="quiz-option__mark" aria-label="Правильный ответ">✓</span>}
-                {answered && isSelected && !isCorrectOption && <span className="quiz-option__mark" aria-label="Неправильный ответ">×</span>}
+                {answered && isCorrectOption && <span className="quiz-option__mark" aria-label="Правильна відповідь">✓</span>}
+                {answered && isSelected && !isCorrectOption && <span className="quiz-option__mark" aria-label="Неправильна відповідь">×</span>}
               </button>
             )
           })}
@@ -114,13 +114,13 @@ function QuizQuestion({ question, questionIndex, total, selectedAnswer, answered
 
       {answered && (
         <section className={`quiz-feedback ${isCorrect ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`} aria-live="polite">
-          <p className="quiz-feedback__label">{isCorrect ? 'Правильно ♥' : 'Почти ♥'}</p>
-          <h3>{isCorrect ? 'Ты помнишь!' : `Правильный ответ: ${correctOption?.text}`}</h3>
+          <p className="quiz-feedback__label">{isCorrect ? 'Правильно ♥' : 'Майже ♥'}</p>
+          <h3>{isCorrect ? 'Ти пам’ятаєш!' : `Правильна відповідь: ${correctOption?.text}`}</h3>
           <p>{question.explanation}</p>
           <QuizMedia media={question.media} question={question} />
-          <p className="quiz-feedback__chosen">Твой ответ: {selectedOption?.text}</p>
+          <p className="quiz-feedback__chosen">Твоя відповідь: {selectedOption?.text}</p>
           <Button variant="secondary" onClick={onNext}>
-            {questionIndex === total - 1 ? 'Узнать результат →' : 'Следующий вопрос →'}
+            {questionIndex === total - 1 ? 'Дізнатися результат →' : 'Наступне питання →'}
           </Button>
         </section>
       )}
@@ -134,26 +134,26 @@ function QuizResult({ correct, incorrect, total, onRestart, onContinue }) {
   return (
     <div className="quiz-panel quiz-panel--result">
       <div className="quiz-result__content">
-        <p className="eyebrow">Ну что...</p>
-        <h1>Вот что получилось</h1>
+        <p className="eyebrow">Ну що...</p>
+        <h1>Ось що вийшло</h1>
 
         <div className="quiz-score" style={{ '--score': `${percentage}%` }} aria-label={`Результат: ${percentage}%`}>
           <div className="quiz-score__inner">
             <strong>{percentage}%</strong>
-            <span>наша история</span>
+            <span>наша історія</span>
           </div>
         </div>
 
         <div className="quiz-result__stats">
-          <p><span>Правильных ответов</span><strong>{correct}</strong></p>
-          <p><span>Неправильных ответов</span><strong>{incorrect}</strong></p>
+          <p><span>Правильних відповідей</span><strong>{correct}</strong></p>
+          <p><span>Неправильних відповідей</span><strong>{incorrect}</strong></p>
         </div>
 
         <p className="quiz-result__message">{getResultMessage(percentage)}</p>
 
         <div className="quiz-result__actions">
-          <Button onClick={onContinue}>Продолжить</Button>
-          <Button variant="text" onClick={onRestart}>Пройти ещё раз</Button>
+          <Button onClick={onContinue}>Продовжити</Button>
+          <Button variant="text" onClick={onRestart}>Пройти ще раз</Button>
         </div>
       </div>
     </div>
@@ -217,9 +217,9 @@ function QuizScene({ onBack, onContinue }) {
     return (
       <section className="scene scene--quiz" aria-labelledby="quiz-title">
         <div className="quiz-panel quiz-panel--empty">
-          <p className="eyebrow">Небольшой тест</p>
-          <h1 id="quiz-title">Вопросы ещё готовятся</h1>
-          <p className="scene__lead">Добавь хотя бы один вопрос в quiz.json, чтобы начать.</p>
+          <p className="eyebrow">Невеликий тест</p>
+          <h1 id="quiz-title">Питання ще готуються</h1>
+          <p className="scene__lead">Додай хоча б одне питання до quiz.json, щоб почати.</p>
           <Button variant="text" onClick={onBack}>← Назад</Button>
         </div>
       </section>
