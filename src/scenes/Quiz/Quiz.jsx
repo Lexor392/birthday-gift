@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import confetti from 'canvas-confetti'
 import Button from '../../components/Button/Button.jsx'
 import quizQuestions from '../../data/quiz.json'
+import { assetPath } from '../../utils/assetPath.js'
 import './Quiz.scss'
 
 const getResultMessage = (percentage) => {
@@ -47,7 +48,7 @@ function QuizMedia({ media, question }) {
         <figure className="quiz-media__item" key={item.src}>
           <div className="quiz-media__frame">
             <img
-              src={item.src}
+              src={assetPath(item.src)}
               alt={item.alt || `Фото до питання: ${question.question}`}
               loading="lazy"
               onError={(event) => {

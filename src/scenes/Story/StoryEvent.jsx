@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import AnimatedLetters from '../../components/AnimatedLetters/AnimatedLetters.jsx'
 import Icon from '../../components/Icon/Icon.jsx'
+import { assetPath } from '../../utils/assetPath.js'
 
 function StoryEvent({ event, index }) {
   const [activeMediaIndex, setActiveMediaIndex] = useState(null)
@@ -168,7 +169,7 @@ function StoryMedia({ item, fallbackAlt, onMediaClick, onOrientationChange }) {
         aria-label={`Відкрити зображення: ${item.alt || fallbackAlt}`}
       >
         <img
-          src={item.src}
+          src={assetPath(item.src)}
           alt={item.alt || fallbackAlt}
           loading="lazy"
           onLoad={(event) => handleMediaLoad(event.currentTarget)}
@@ -186,11 +187,11 @@ function StoryMedia({ item, fallbackAlt, onMediaClick, onOrientationChange }) {
           muted
           loop
           preload="metadata"
-          poster={item.poster}
+          poster={assetPath(item.poster)}
           onLoadedMetadata={(event) => handleMediaLoad(event.currentTarget)}
           aria-label={item.alt || fallbackAlt}
         >
-          <source src={item.src} />
+            <source src={assetPath(item.src)} />
           Ваш браузер не підтримує відтворення відео.
         </video>
         <button
@@ -259,12 +260,12 @@ function StoryLightbox({ mediaItems, activeIndex, media, title, onClose, onChang
       )}
       <div className="story-lightbox__content" onClick={(event) => event.stopPropagation()}>
         {media.type === 'video' ? (
-          <video controls autoPlay muted loop playsInline preload="auto" poster={media.poster}>
-            <source src={media.src} />
+          <video controls autoPlay muted loop playsInline preload="auto" poster={assetPath(media.poster)}>
+            <source src={assetPath(media.src)} />
             Ваш браузер не підтримує відтворення відео.
           </video>
         ) : (
-          <img src={media.src} alt={media.alt || title} />
+          <img src={assetPath(media.src)} alt={media.alt || title} />
         )}
       </div>
     </div>,

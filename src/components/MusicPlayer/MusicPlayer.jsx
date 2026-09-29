@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Icon from '../Icon/Icon.jsx'
+import { assetPath } from '../../utils/assetPath.js'
 
 function MusicPlayer({ startSignal = '' }) {
   const audioRef = useRef(null)
@@ -70,7 +71,7 @@ function MusicPlayer({ startSignal = '' }) {
 
   return (
     <div className={`music-player${isPlaying && !isMuted ? ' is-playing' : ''}`}>
-      <audio ref={audioRef} src="/sound/sleep-lofi-radio.mp3" preload="auto" autoPlay loop />
+      <audio ref={audioRef} src={assetPath('/sound/sleep-lofi-radio.mp3')} preload="auto" autoPlay loop />
       <span className="music-player__status" aria-hidden="true" />
       <span className="music-player__label">Sleep lofi</span>
       <button
